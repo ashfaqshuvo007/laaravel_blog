@@ -3,61 +3,78 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Redirect;
+use DB;
 
-class WelcomeController extends Controller
-{
+class WelcomeController extends Controller {
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index() {
+        $category_name = DB::table('tbl_category')
+                ->where('publication_status', '=', 1)
+                ->pluck('category_name');
+
         $main_content = view('pages.home');
-        $category = view('pages.category');
+
+        $category = view('pages.category')
+                ->with('category_name', $category_name);
         $friends = view('pages.friends');
+
+
         return view('master')
-                ->with('mainContent',$main_content)
-                ->with('category',$category)
-                ->with('friendContent',$friends);
+                        ->with('mainContent', $main_content)
+                        ->with('category', $category)
+                        ->with('friendContent', $friends);
     }
-    
-    public function portfolio()
-    {
+
+    public function portfolio() {
         $portfolio = view('pages.portfolio');
         $friends = view('pages.friends');
         return view('master')
-                ->with('mainContent',$portfolio)
-                ->with('friendContent',$friends);
+                        ->with('mainContent', $portfolio)
+                        ->with('friendContent', $friends);
     }
-    public function services()
-    {
+
+    public function services() {
+        $category_name = DB::table('tbl_category')
+                ->where('publication_status', '=', 1)
+                ->pluck('category_name');
+
         $srvices = view('pages.services');
-        $category = view('pages.category');
+        $category = view('pages.category')
+                ->with('category_name', $category_name);
         //$friends = view('pages.friends');
         return view('master')
-                ->with('mainContent',$srvices)
-                ->with('category',$category);
-                //->with('friendContent',$friends)
+                        ->with('mainContent', $srvices)
+                        ->with('category', $category);
+        //->with('friendContent',$friends)
     }
-    
-      public function contact()
-    {
+
+    public function contact() {
+        $category_name = DB::table('tbl_category')
+                ->where('publication_status', '=', 1)
+                ->pluck('category_name');
+        
         $contact = view('pages.contact');
-        $category = view('pages.category');
+        $category = view('pages.category')
+                    ->with('category_name', $category_name);
         $friends = view('pages.friends');
         return view('master')
-                ->with('mainContent',$contact)
-                ->with('category',$category)
-                ->with('friendContent',$friends);
+                        ->with('mainContent', $contact)
+                        ->with('category', $category)
+                        ->with('friendContent', $friends);
     }
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    public function create() {
         //
     }
 
@@ -67,8 +84,7 @@ class WelcomeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
         //
     }
 
@@ -78,8 +94,7 @@ class WelcomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show($id) {
         //
     }
 
@@ -89,8 +104,7 @@ class WelcomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
+    public function edit($id) {
         //
     }
 
@@ -101,8 +115,7 @@ class WelcomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id) {
         //
     }
 
@@ -112,8 +125,8 @@ class WelcomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id) {
         //
     }
+
 }

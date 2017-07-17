@@ -33,6 +33,24 @@
         <link href="{{URL::to('public/admin_assets/css/style-responsive.css')}}" rel="stylesheet" />
         <link href="{{URL::to('public/admin_assets/css/xcharts.min.css')}}')}}" rel=" stylesheet">	
         <link href="{{URL::to('public/admin_assets/css/jquery-ui-1.10.4.min.css')}}" rel="stylesheet">
+        
+        <!--Onlcick -->
+        <script type="text/javascript">
+            function checkDelete()
+            {
+                check = confirm('Are you sure you want to delete this ?');
+                
+                if(check)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        
+        </script>
         <!-- =======================================================
             Theme Name: NiceAdmin
             Theme URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
@@ -323,10 +341,16 @@
                         </li>
                         <li class="">
                             <a class="" href="{{URL::to('/add_category')}}">
-                                <i class="icon_house_alt"></i>
+                                <i class="icon_documents_alt"></i>
                                 <span>Add Categories</span>
                             </a>
-                        </li>       
+                        </li>
+                        <li class="">
+                            <a class="" href="{{URL::to('/manage-category')}}">
+                                <i class="icon_table"></i>
+                                <span>Manage Categories</span>
+                            </a>
+                        </li>
                         <li class="sub-menu">
                             <a href="javascript:;" class="">
                                 <i class="icon_desktop"></i>

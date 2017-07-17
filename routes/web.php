@@ -30,6 +30,12 @@ Route::post('/admin-login-check','AdminController@admin_login_check');
 
 /*Super Admin Start*/
 Route::get('/dashboard','SuperAdminController@index');
+
 Route::get('/add_category','SuperAdminController@add_category');
 Route::post('/save-category','SuperAdminController@save_category');
+Route::get('/manage-category','SuperAdminController@manage_category');
+Route::get('/unpublished-category/{id}','SuperAdminController@unpublished_category');
+Route::get('/published-category/{id}','SuperAdminController@published_category');
+Route::get('/delete-category/{id}','SuperAdminController@delete_category');
+Route::get('/edit-category/{id}','SuperAdminController@edit_category');
 Route::get('/logout','SuperAdminController@logout');

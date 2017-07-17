@@ -38,12 +38,59 @@ class SuperAdminController extends Controller {
 
     public function save_category(Request $request) {
         $data = array();
-        $data['category_name']=$request->category_name;
-        $data['category_description']=$request->category_description;
-        $data['publication_status']=$request->publication_status;
+        $data['category_name'] = $request->category_name;
+        $data['category_description'] = $request->category_description;
+        $data['publication_status'] = $request->publication_status;
         DB::table('tbl_category')->insert($data);
-        Session::put('message','Save Category information successfully');
+        Session::put('message', 'Save Category information successfully');
         return Redirect::to('/add_category');
+    }
+
+    public function manage_category() {
+        $category_info = DB::table('tbl_category')->get();
+
+
+
+        $manage_category = view('admin.pages.manage_category')
+                ->with('all_category_info', $category_info);
+
+        return view('admin.admin_master')
+                        ->with('admin_content', $manage_category);
+    }
+
+    public function unpublished_category($category_id) {
+        DB::table('tbl_category')
+                ->where('category_id', $category_id)
+                ->update(['publication_status' => 0]);
+
+        return Redirect::to('/manage-category');
+    }
+
+    public function published_category($category_id) {
+        DB::table('tbl_category')
+                ->where('category_id', $category_id)
+                ->update(['publication_status' => 1]);
+
+        return Redirect::to('/manage-category');
+    }
+
+    public function delete_category($category_id) {
+        DB::table('tbl_category')
+                ->where('category_id', $category_id)
+                ->delete();
+
+        return Redirect::to('/manage-category');
+    }
+
+    public function edit_category($category_id) {
+        $category_info = DB::table('tbl_category')
+                ->where('category_id', $category_id)
+                ->first();
+        $edit_category = view('admin.pages.edit_category')
+                ->with('edit_category_info', $category_info);
+
+        return view('admin.admin_master')
+                        ->with('admin_content', $edit_category);
     }
 
     /**
