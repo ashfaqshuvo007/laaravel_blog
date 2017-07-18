@@ -6,6 +6,7 @@
             <name>blog_basic</name>
         </data>
         <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
+            <word>endforeach</word>
             <word>endsection</word>
             <word>Laravel</word>
         </spellchecker-wordlist>

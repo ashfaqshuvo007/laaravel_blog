@@ -33,23 +33,22 @@
         <link href="{{URL::to('public/admin_assets/css/style-responsive.css')}}" rel="stylesheet" />
         <link href="{{URL::to('public/admin_assets/css/xcharts.min.css')}}')}}" rel=" stylesheet">	
         <link href="{{URL::to('public/admin_assets/css/jquery-ui-1.10.4.min.css')}}" rel="stylesheet">
-        
+
         <!--Onlcick -->
         <script type="text/javascript">
             function checkDelete()
             {
                 check = confirm('Are you sure you want to delete this ?');
-                
-                if(check)
+
+                if (check)
                 {
                     return true;
-                }
-                else
+                } else
                 {
                     return false;
                 }
             }
-        
+
         </script>
         <!-- =======================================================
             Theme Name: NiceAdmin
@@ -351,58 +350,18 @@
                                 <span>Manage Categories</span>
                             </a>
                         </li>
-                        <li class="sub-menu">
-                            <a href="javascript:;" class="">
-                                <i class="icon_desktop"></i>
-                                <span>UI Fitures</span>
-                                <span class="menu-arrow arrow_carrot-right"></span>
-                            </a>
-                            <ul class="sub">
-                                <li><a class="" href="general.html">Elements</a></li>
-                                <li><a class="" href="buttons.html">Buttons</a></li>
-                                <li><a class="" href="grids.html">Grids</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a class="" href="widgets.html">
-                                <i class="icon_genius"></i>
-                                <span>Widgets</span>
-                            </a>
-                        </li>
-                        <li>                     
-                            <a class="" href="chart-chartjs.html">
-                                <i class="icon_piechart"></i>
-                                <span>Charts</span>
-
-                            </a>
-
-                        </li>
-
-                        <li class="sub-menu">
-                            <a href="javascript:;" class="">
-                                <i class="icon_table"></i>
-                                <span>Tables</span>
-                                <span class="menu-arrow arrow_carrot-right"></span>
-                            </a>
-                            <ul class="sub">
-                                <li><a class="" href="basic_table.html">Basic Table</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="sub-menu">
-                            <a href="javascript:;" class="">
+                        <li class="">
+                            <a class="" href="{{URL::to('/add-blog')}}">
                                 <i class="icon_documents_alt"></i>
-                                <span>Pages</span>
-                                <span class="menu-arrow arrow_carrot-right"></span>
+                                <span>Add Blogs</span>
                             </a>
-                            <ul class="sub">                          
-                                <li><a class="" href="profile.html">Profile</a></li>
-                                <li><a class="" href="login.html"><span>Login Page</span></a></li>
-                                <li><a class="" href="blank.html">Blank Page</a></li>
-                                <li><a class="" href="404.html">404 Error</a></li>
-                            </ul>
                         </li>
-
+                        <li class="">
+                            <a class="" href="{{URL::to('/manage-blog')}}">
+                                <i class="icon_table"></i>
+                                <span>Manage Blogs</span>
+                            </a>
+                        </li>
                     </ul>
                     <!-- sidebar menu end-->
                 </div>
@@ -464,48 +423,48 @@
         <script>
 
 //knob
-$(function () {
-    $(".knob").knob({
-        'draw': function () {
-            $(this.i).val(this.cv + '%')
-        }
-    })
-});
+            $(function () {
+                $(".knob").knob({
+                    'draw': function () {
+                        $(this.i).val(this.cv + '%')
+                    }
+                })
+            });
 
 //carousel
-$(document).ready(function () {
-    $("#owl-slider").owlCarousel({
-        navigation: true,
-        slideSpeed: 300,
-        paginationSpeed: 400,
-        singleItem: true
+            $(document).ready(function () {
+                $("#owl-slider").owlCarousel({
+                    navigation: true,
+                    slideSpeed: 300,
+                    paginationSpeed: 400,
+                    singleItem: true
 
-    });
-});
+                });
+            });
 
 //custom select box
 
-$(function () {
-    $('select.styled').customSelect();
-});
+            $(function () {
+                $('select.styled').customSelect();
+            });
 
-/* ---------- Map ---------- */
-$(function () {
-    $('#map').vectorMap({
-        map: 'world_mill_en',
-        series: {
-            regions: [{
-                    values: gdpData,
-                    scale: ['#000', '#000'],
-                    normalizeFunction: 'polynomial'
-                }]
-        },
-        backgroundColor: '#eef3f7',
-        onLabelShow: function (e, el, code) {
-            el.html(el.html() + ' (GDP - ' + gdpData[code] + ')');
-        }
-    });
-});
+            /* ---------- Map ---------- */
+            $(function () {
+                $('#map').vectorMap({
+                    map: 'world_mill_en',
+                    series: {
+                        regions: [{
+                                values: gdpData,
+                                scale: ['#000', '#000'],
+                                normalizeFunction: 'polynomial'
+                            }]
+                    },
+                    backgroundColor: '#eef3f7',
+                    onLabelShow: function (e, el, code) {
+                        el.html(el.html() + ' (GDP - ' + gdpData[code] + ')');
+                    }
+                });
+            });
 
         </script>
 

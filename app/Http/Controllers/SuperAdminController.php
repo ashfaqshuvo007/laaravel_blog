@@ -42,7 +42,7 @@ class SuperAdminController extends Controller {
         $data['category_description'] = $request->category_description;
         $data['publication_status'] = $request->publication_status;
         DB::table('tbl_category')->insert($data);
-        Session::put('message', 'Save Category information successfully');
+        Session::put('message', 'Saved Category information successfully');
         return Redirect::to('/add_category');
     }
 
@@ -82,17 +82,46 @@ class SuperAdminController extends Controller {
         return Redirect::to('/manage-category');
     }
 
-    public function edit_category($category_id) {
+    public function edit_category($category_id) 
+    {
         $category_info = DB::table('tbl_category')
                 ->where('category_id', $category_id)
                 ->first();
         $edit_category = view('admin.pages.edit_category')
-                ->with('edit_category_info', $category_info);
+                        ->with('category_info', $category_info);
 
         return view('admin.admin_master')
                         ->with('admin_content', $edit_category);
     }
+    
+    public function update_category(Request $request) {
+        $data = array();
+        $category_id =$request->category_id;
+        $data['category_name'] = $request->category_name;
+        $data['category_description'] = $request->category_description;
+        $data['publication_status'] = $request->publication_status;
+        DB::table('tbl_category')
+                ->where('category_id',$category_id)
+                ->update($data);
+        
+        Session::put('message', 'Updated Category information successfully');
+        return Redirect::to('/edit-category/'.$category_id);
+    }
+    
+      public function add_blog() {
+          
+          $category_info = DB::table('tbl_category')
+                  ->where('publication_status',1)
+                  ->get();
+          
+        $add_blog = view('admin.pages.add_blog')
+                ->with('category_info',$category_info);
 
+        return view('admin.admin_master')
+                        ->with('admin_content', $add_blog);
+    }
+    
+    
     /**
      * Show the form for creating a new resource.
      *

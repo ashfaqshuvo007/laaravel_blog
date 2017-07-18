@@ -4,7 +4,7 @@
 <section class="wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h3 class="page-header"><i class="fa fa-file-text-o"></i> Add Categories</h3>
+            <h3 class="page-header"><i class="fa fa-file-text-o"></i> Edit Categories</h3>
             <ol class="breadcrumb">
                 <li><i class="fa fa-home"></i><a href="index.html">Home</a></li>
                 <li><i class="icon_document_alt"></i>Forms</li>
@@ -32,19 +32,17 @@
                     Edit Categories
                 </header>
                 <div class="panel-body">
-                    <?php
-                        foreach ($edit_category_info as $v_category_info)
-                        { 
-                    ?>
-                    {!! Form::open(['url' => '/update-category', 'method'=>'post','name'=> 'edit_category', 'role'=>'form']) !!} 
+                   
+                    {!! Form::open(['url' => '/update-category', 'method'=>'post','name'=>'edit_category']) !!} 
                         <div class="form-group">
                             <label for="name">Category Name</label>
-                            <input type="text" class="form-control" name="category_name"  value="<?php echo $v_category_info->category_name ;?>">
+                            <input type="text" class="form-control" name="category_name"  value="<?php echo $category_info->category_name ;?>">
+                            <input type="hidden" class="form-control" name="category_id"  value="<?php echo $category_info->category_id ;?>">
                         </div>
 
                         <div class="form-group">
                             <label for="">Category description </label>
-                            <textarea class="form-control ckeditor" name="category_description" rows="6" value="<?php echo $v_category_info->category_description ; ?>" ></textarea>
+                            <textarea class="form-control ckeditor" name="category_description" rows="6"><?php echo $category_info->category_description ; ?></textarea>
                         </div>
 
                         <div class="form-group">
@@ -56,13 +54,13 @@
                             </select>
 
                         </div>
-                        <div class="form-group">
+                        <div class="form-actions">
                             <button type="submit" class="btn btn-primary ">Update</button>
-                            <button type="submit" class="btn btn-danger ">Cancel</button>
+                            <button type="reset" class="btn btn-danger ">Cancel</button>
                         </div>
 
                     {!! Form::close() !!}
-                        <?php }?>
+                    
                 </div>
             </section>
         </div>
