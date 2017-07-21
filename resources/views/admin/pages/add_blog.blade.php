@@ -32,15 +32,14 @@
                     Add Blog
                 </header>
                 <div class="panel-body">
-                    {!! Form::open(['url' => '/save-blog', 'method'=>'post', 'role'=>'form']) !!} 
+                    {!! Form::open(['url' => '/save-blog', 'method'=>'post', 'role'=>'form', 'enctype' => 'multipart/form-data']) !!} 
                         <div class="form-group">
                             <label for="name">Blog Title</label>
                             <input type="text" class="form-control" name="blog_title"  placeholder="Enter blog title..">
                         </div>
                     
                         <div class="form-group">
-                            <label for="status">Category</label>
-                            
+                            <label for="status">Category</label>   
                             <select class="form-control" name="category_id">
                                 <option>Select Category</option>
                                 @foreach($category_info as $c_info)

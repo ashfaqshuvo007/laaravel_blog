@@ -13,30 +13,38 @@ class WelcomeController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function index() {
+    public function index() 
+    {
+        $published_blog = DB::table('tbl_blog')
+                    ->join('tbl_category', 'tbl_blog.category_id', '=', 'tbl_category.category_id')
+                    ->where('tbl_blog.publication_status',1)
+                    ->select('tbl_blog.*','tbl_category.category_name')
+                    ->get();
+        
         $category_name = DB::table('tbl_category')
                 ->where('publication_status', '=', 1)
                 ->pluck('category_name');
 
-        $main_content = view('pages.home');
+        $main_content = view('pages.home')
+                ->with('published_blog',$published_blog);
 
         $category = view('pages.category')
                 ->with('category_name', $category_name);
-        $friends = view('pages.friends');
+        $recent = view('pages.recent');
 
 
         return view('master')
                         ->with('mainContent', $main_content)
                         ->with('category', $category)
-                        ->with('friendContent', $friends);
+                        ->with('friendContent', $recent);
     }
 
     public function portfolio() {
         $portfolio = view('pages.portfolio');
-        $friends = view('pages.friends');
+        $recent = view('pages.recent');
         return view('master')
                         ->with('mainContent', $portfolio)
-                        ->with('friendContent', $friends);
+                        ->with('friendContent', $recent);
     }
 
     public function services() {
@@ -62,11 +70,11 @@ class WelcomeController extends Controller {
         $contact = view('pages.contact');
         $category = view('pages.category')
                     ->with('category_name', $category_name);
-        $friends = view('pages.friends');
+        $recent = view('pages.recent');
         return view('master')
                         ->with('mainContent', $contact)
                         ->with('category', $category)
-                        ->with('friendContent', $friends);
+                        ->with('friendContent', $recent);
     }
 
     /**

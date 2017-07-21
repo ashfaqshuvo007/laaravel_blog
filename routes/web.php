@@ -41,4 +41,6 @@ Route::get('/edit-category/{id}','SuperAdminController@edit_category');
 Route::post('/update-category/','SuperAdminController@update_category');
 /*Blog Routes*/
 Route::get('/add-blog','SuperAdminController@add_blog');
+Route::post('/save-blog','SuperAdminController@save_blog');
+Route::get('/manage-blog','SuperAdminController@manage_blog');
 Route::get('/logout','SuperAdminController@logout');

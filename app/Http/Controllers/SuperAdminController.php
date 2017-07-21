@@ -82,43 +82,86 @@ class SuperAdminController extends Controller {
         return Redirect::to('/manage-category');
     }
 
-    public function edit_category($category_id) 
-    {
+    public function edit_category($category_id) {
         $category_info = DB::table('tbl_category')
                 ->where('category_id', $category_id)
                 ->first();
         $edit_category = view('admin.pages.edit_category')
-                        ->with('category_info', $category_info);
+                ->with('category_info', $category_info);
 
         return view('admin.admin_master')
                         ->with('admin_content', $edit_category);
     }
-    
+
     public function update_category(Request $request) {
         $data = array();
-        $category_id =$request->category_id;
+        $category_id = $request->category_id;
         $data['category_name'] = $request->category_name;
         $data['category_description'] = $request->category_description;
         $data['publication_status'] = $request->publication_status;
         DB::table('tbl_category')
-                ->where('category_id',$category_id)
+                ->where('category_id', $category_id)
                 ->update($data);
-        
+
         Session::put('message', 'Updated Category information successfully');
-        return Redirect::to('/edit-category/'.$category_id);
+        return Redirect::to('/edit-category/' . $category_id);
     }
-    
-      public function add_blog() {
-          
-          $category_info = DB::table('tbl_category')
-                  ->where('publication_status',1)
-                  ->get();
-          
+
+    public function add_blog() {
+
+        $category_info = DB::table('tbl_category')
+                ->where('publication_status', 1)
+                ->get();
+
         $add_blog = view('admin.pages.add_blog')
-                ->with('category_info',$category_info);
+                ->with('category_info', $category_info);
 
         return view('admin.admin_master')
                         ->with('admin_content', $add_blog);
+    }
+
+    public function save_blog(Request $request) {
+        $data = array();
+        $data['blog_title'] = $request->blog_title;
+        $data['category_id'] = $request->category_id;
+        $data['blog_short_description'] = $request->blog_short_description;
+        $data['blog_long_description'] = $request->blog_long_description;
+        $data['publication_status'] = $request->publication_status;
+        
+        //image upload code
+        $image = $request->file('blog_image');
+        if ($image) {
+            // Laravel built-in function
+            $image_name = str_random(20);
+            //built-in function to get the uploaded file ext.
+            $ext = strtolower($image->getClientOriginalExtension());
+            $image_full_name = $image_name . '.' . $ext;
+            $upload_path = 'blog-image/'; //Settig up the path to save file.
+            $image_url = $upload_path . $image_full_name;
+            $success = $image->move($upload_path, $image_full_name);
+            if ($success) {
+                $data['blog_image'] = $image_url; //saving only the image URL in DB
+                DB::table('tbl_blog')->insert($data);
+                Session::put('message', 'Saved blog information successfully');
+                return Redirect::to('/add-blog');
+            }
+        } else {
+            DB::table('tbl_blog')->insert($data);
+            Session::put('message', 'Saved blog information successfully');
+            return Redirect::to('/add-blog');
+        }
+    }
+
+    public function manage_blog() {
+        $blog_info = DB::table('tbl_blog')->get();
+
+
+
+        $manage_blog = view('admin.pages.manage_blog')
+                ->with('blog_info', $blog_info);
+
+        return view('admin.admin_master')
+                        ->with('admin_content', $manage_blog);
     }
     
     
