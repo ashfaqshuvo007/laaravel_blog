@@ -76,7 +76,32 @@ class WelcomeController extends Controller {
                         ->with('category', $category)
                         ->with('friendContent', $recent);
     }
+    
+    public function blog_details($blog_id)
+    {
+        $category_name = DB::table('tbl_category')
+                ->where('publication_status', '=', 1)
+                ->pluck('category_name');
+        
+        $blog_info_id = DB::table('tbl_blog')
+                        ->join('tbl_category','tbl_blog.category_id','=','tbl_category.category_id')
+                        ->where('tbl_blog.blog_id',$blog_id)
+                        ->select('tbl_blog.*','tbl_category.category_name')
+                        ->first();
+        
+        $blog_details = view('pages.blog_details')
+                            ->with('blog_info',$blog_info_id);
+        $category = view('pages.category')
+                    ->with('category_name', $category_name);
+        $recent = view('pages.recent');
+        return view('master')
+                        ->with('mainContent', $blog_details)
+                        ->with('category', $category)
+                        ->with('friendContent', $recent);                
+    }
 
+
+    
     /**
      * Show the form for creating a new resource.
      *

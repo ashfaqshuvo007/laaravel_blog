@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTblBlogTable extends Migration
+class CreateBlogTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,13 +14,14 @@ class CreateTblBlogTable extends Migration
     public function up()
     {
         Schema::create('tbl_blog', function (Blueprint $table) {
-            $table->increments('blog_id');
+            $table->increments('blog_id',3);
             $table->integer('category_id');
             $table->string('blog_title',50);
-            $table->text('short_description');
-            $table->text('long_description');
-            $table->tinyInteger('publication_status');
+            $table->text('blog_short_description');
+            $table->text('blog_long_description');
             $table->string('blog_image');
+            $table->tinyInteger('publication_status');
+            $table->tinyInteger('hit_count');
             $table->timestamps();
         });
     }
