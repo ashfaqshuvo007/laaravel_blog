@@ -23,6 +23,7 @@
                         <tr>
                             <th class="text-center"><i class="icon_profile"></i> Blog ID</th>
                             <th class="text-center"><i class="icon_profile"></i> Blog Image</th>
+                            <th class="text-center"><i class="icon_profile"></i> Blog Category</th>
                             <th class="text-center"><i class="icon_calendar"></i> Blog Title</th>
                             <th class="text-center"><i class="icon_mail_alt"></i> Status</th>
                             <th class="text-center"><i class="icon_cogs"></i> Action</th>
@@ -33,7 +34,10 @@
                             <tr>
                                 <td class="text-center"><?php echo $v_blog->blog_id ?></td>
                                 <td class="text-center"><img src="<?php echo $v_blog->blog_image ?>" width="50" height="50"></td>
-                                <td class="text-center"><?php echo $v_blog->blog_title ?></td>                           
+                                <td class="text-center"><?php echo $v_blog->category_name ?></td> 
+                                <td class="text-center"><?php echo $v_blog->blog_title ?></td> 
+                                
+                                
                                 <td class="text-center">
                                     <?php
                                     if ($v_blog->publication_status == 1) {

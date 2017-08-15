@@ -10,11 +10,11 @@
 
         <h2><a href="{{URL::to('/blog-details/'.$v_blog->blog_id) }}">{{ $v_blog->blog_title }}</a></h2>
 
-        <strong>Author:</strong> Steven | <strong>Category:</strong> <a href="#">{{ $v_blog->category_name }}</a>
+        <strong>Total Views : {{ $v_blog->hit_count }} </strong>| <strong>Category:</strong> <a href="#">{{ $v_blog->category_name }}</a>
 
         <a href="#" target="_parent"><img src="{{ $v_blog->blog_image }}" alt="image" width="400"/></a>
 
-        
+
         <p>
             {{ $v_blog->blog_short_description }}
         </p>
@@ -23,7 +23,7 @@
      @endforeach
     <div class="cleaner"></div>
 </div>
-  
+
 
 
 @endsection

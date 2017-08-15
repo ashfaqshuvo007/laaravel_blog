@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<!-- 
+<!--
 Project Name: Simple Blog using Laravel
 Author      : Ashfaq H Ahmed
 Template    : Red blog template
@@ -14,7 +14,6 @@ NOTE: This is just a practice file only used for practicing skill on laravel.
         <meta name="keywords" content="Red Blog Theme, Free CSS Templates" />
         <meta name="description" content="Red Blog Theme - Free CSS Templates by templatemo.com" />
         <link href="{{URL::to('public/templatemo_style.css')}}" rel="stylesheet" type="text/css" />
-
     </head>
     <body>
 
@@ -26,9 +25,13 @@ NOTE: This is just a practice file only used for practicing skill on laravel.
                     <ul>
                         <li><a href="{{URL::to('/')}}" >Home</a></li>
                         <li><a href="{{URL::to('/portfolio')}}">Portfolio</a></li>
-                        <li><a href="{{URL::to('/services')}}">Services</a></li>
-                        <li><a href="{{URL::to('/contact')}}">Contact Us</a></li>
-                    </ul>    	
+                        @if (Auth::guest())
+                        <li><a href="{{URL::to('/login')}}">Login</a></li>
+                        <li><a href="{{URL::to('/register')}}">Registration</a></li>
+                        @else
+                        <li><a href="{{URL::to('/logout')}}">Logout</a></li>
+                        @endif
+                    </ul>
 
                 </div> <!-- end of templatemo_menu -->
 
@@ -68,12 +71,18 @@ NOTE: This is just a practice file only used for practicing skill on laravel.
 
                         @yield('friendContent')
 
-                        <div id="ads">
-                            <a href="#"><img src="{{URL::to('public/images/templatemo_200x100_banner.jpg')}}" alt="banner 1" /></a>
-
-                            <a href="#"><img src="{{URL::to('public/images/templatemo_200x100_banner.jpg')}}" alt="banner 2" /></a>
-                        </div>
-
+                        <h4>Popular Blogs</h4>
+<?php
+$popular_blog = DB::table('tbl_blog')
+	->orderBy('hit_count', 'desc')
+	->take(4)
+	->get();
+?>
+                            <ul class="templatemo_list">
+                                @foreach($popular_blog as $v_blog)
+                                <li><a href="{{ URL::to('/blog-details/'.$v_blog->blog_id)}}">{{ $v_blog->blog_title }}</a> &nbsp; ({{ $v_blog->hit_count}})</li>
+                                @endforeach
+                            </ul>
                     </div>
 
                     <div class="cleaner"></div>
@@ -87,11 +96,6 @@ NOTE: This is just a practice file only used for practicing skill on laravel.
         </div>
 
         <div id="templatemo_footer">
-
-            Copyright © 2016 <a href="index.html">Ashfaq H Ahmed</a> | 
-            <a href="http://www.iwebsitetemplate.com" target="_parent">Website Templates</a> by <a href="#" target="_parent">Free CSS Templates</a>
-
+            Copyright © <?php echo date('Y') ?> <a href="index.html">Ashfaq H Ahmed</a>
         </div>
-
-        
 </html>

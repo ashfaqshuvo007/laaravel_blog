@@ -10,7 +10,7 @@
 
         <h2>{{ $blog_info->blog_title }}</h2>
 
-        <strong>Author:</strong> Steven | <strong>Category:</strong> <a href="#">{{ $blog_info->category_name }}</a>
+        <strong>Total Views : {{ $blog_info->hit_count }} </strong>| <strong>Category:</strong> <a href="#">{{ $blog_info->category_name }}</a>
 
         <a href="#" target="_parent"><img src="{{URL::to($blog_info->blog_image)}}" alt="image" width="400"/></a>
 

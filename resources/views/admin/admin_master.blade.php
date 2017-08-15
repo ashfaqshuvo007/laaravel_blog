@@ -10,14 +10,14 @@
 
         <title>Creative - Bootstrap Admin Template</title>
 
-        <!-- Bootstrap CSS -->    
+        <!-- Bootstrap CSS -->
         <link href="{{URL::to('public/admin_assets/css/bootstrap.min.css')}}" rel="stylesheet">
         <!-- bootstrap theme -->
         <link href="{{URL::to('public/admin_assets/css/bootstrap-theme.css')}}" rel="stylesheet">
         <!--external css-->
         <!-- font icon -->
         <link href="{{URL::to('public/admin_assets/css/elegant-icons-style.css')}}" rel="stylesheet" />
-        <link href="{{URL::to('public/admin_assets/css/font-awesome.min.css')}}" rel="stylesheet" />    
+        <link href="{{URL::to('public/admin_assets/css/font-awesome.min.css')}}" rel="stylesheet" />
         <!-- full calendar css-->
         <link href="{{URL::to('public/admin_assets/assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css')}}" rel="stylesheet" />
         <link href="{{URL::to('public/admin_assets/assets/fullcalendar/fullcalendar/fullcalendar.css')}}" rel="stylesheet" />
@@ -31,7 +31,7 @@
         <link href="{{URL::to('public/admin_assets/css/widgets.css')}}" rel="stylesheet">
         <link href="{{URL::to('public/admin_assets/css/style.css')}}" rel="stylesheet">
         <link href="{{URL::to('public/admin_assets/css/style-responsive.css')}}" rel="stylesheet" />
-        <link href="{{URL::to('public/admin_assets/css/xcharts.min.css')}}')}}" rel=" stylesheet">	
+        <link href="{{URL::to('public/admin_assets/css/xcharts.min.css')}}')}}" rel=" stylesheet">
         <link href="{{URL::to('public/admin_assets/css/jquery-ui-1.10.4.min.css')}}" rel="stylesheet">
 
         <!--Onlcick -->
@@ -74,17 +74,17 @@
 
                 <div class="nav search-row" id="top_menu">
                     <!--  search form start -->
-                    <ul class="nav top-menu">                    
+                    <ul class="nav top-menu">
                         <li>
                             <form class="navbar-form">
                                 <input class="form-control" placeholder="Search" type="text">
                             </form>
-                        </li>                    
+                        </li>
                     </ul>
-                    <!--  search form end -->                
+                    <!--  search form end -->
                 </div>
 
-                <div class="top-nav notification-row">                
+                <div class="top-nav notification-row">
                     <!-- notificatoin dropdown start-->
                     <ul class="nav pull-right top-menu">
 
@@ -252,32 +252,32 @@
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <span class="label label-primary"><i class="icon_profile"></i></span> 
+                                        <span class="label label-primary"><i class="icon_profile"></i></span>
                                         Friend Request
                                         <span class="small italic pull-right">5 mins</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <span class="label label-warning"><i class="icon_pin"></i></span>  
+                                        <span class="label label-warning"><i class="icon_pin"></i></span>
                                         John location.
                                         <span class="small italic pull-right">50 mins</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <span class="label label-danger"><i class="icon_book_alt"></i></span> 
+                                        <span class="label label-danger"><i class="icon_book_alt"></i></span>
                                         Project 3 Completed.
                                         <span class="small italic pull-right">1 hr</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <span class="label label-success"><i class="icon_like"></i></span> 
+                                        <span class="label label-success"><i class="icon_like"></i></span>
                                         Mick appreciated your work.
                                         <span class="small italic pull-right"> Today</span>
                                     </a>
-                                </li>                            
+                                </li>
                                 <li>
                                     <a href="#">See all notifications</a>
                                 </li>
@@ -310,7 +310,7 @@
                                     <a href="#"><i class="icon_chat_alt"></i> Chats</a>
                                 </li>
                                 <li>
-                                    <a href="{{URL::to('/logout')}}"><i class="icon_key_alt"></i> Log Out</a>
+                                    <a href="{{URL::to('/admin-logout')}}"><i class="icon_key_alt"></i> Log Out</a>
                                 </li>
                                 <li>
                                     <a href="documentation.html"><i class="icon_key_alt"></i> Documentation</a>
@@ -324,14 +324,14 @@
                     </ul>
                     <!-- notificatoin dropdown end-->
                 </div>
-            </header>      
+            </header>
             <!--header end-->
 
             <!--sidebar start-->
             <aside>
                 <div id="sidebar"  class="nav-collapse ">
                     <!-- sidebar menu start-->
-                    <ul class="sidebar-menu">                
+                    <ul class="sidebar-menu">
                         <li class="active">
                             <a class="" href="{{URL::to('/dashboard')}}">
                                 <i class="icon_house_alt"></i>
@@ -413,9 +413,9 @@
         <script src="{{URL::to('public/admin_assets/js/xcharts.min.js')}}"></script>
         <script src="{{URL::to('public/admin_assets/js/jquery.autosize.min.js')}}"></script>
         <script src="{{URL::to('public/admin_assets/js/jquery.placeholder.min.js')}}"></script>
-        <script src="{{URL::to('public/admin_assets/js/gdp-data.js')}}"></script>	
+        <script src="{{URL::to('public/admin_assets/js/gdp-data.js')}}"></script>
         <script src="{{URL::to('public/admin_assets/js/morris.min.js')}}"></script>
-        <script src="{{URL::to('public/admin_assets/js/sparklines.js')}}"></script>	
+        <script src="{{URL::to('public/admin_assets/js/sparklines.js')}}"></script>
         <script src="{{URL::to('public/admin_assets/js/charts.js')}}"></script>
         <script src="{{URL::to('public/admin_assets/js/jquery.slimscroll.min.js')}}"></script>
         <!-- ck editor -->
